@@ -19,6 +19,7 @@ package internal
 
 import (
 	"errors"
+	"fmt"
 	"regexp"
 	"strings"
 	"sync"
@@ -145,7 +146,7 @@ func (s *namesrvs) SetCredentials(credentials primitive.Credentials) {
 }
 
 func (s *namesrvs) AddrList() []string {
-	println(s.brokerAddressesMap)
+	fmt.Printf("%#v", s.brokerAddressesMap)
 	return s.srvs
 }
 
