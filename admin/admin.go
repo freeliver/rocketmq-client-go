@@ -116,6 +116,7 @@ func (a *admin) CreateTopic(ctx context.Context, opts ...OptionCreate) error {
 	//create topic in broker
 	if cfg.BrokerAddr == "" {
 		addrs := a.namesrv.AddrList()
+		fmt.Println(addrs)
 		if len(addrs) <= 0 {
 			return ErrBrokerNotFound
 		}
