@@ -19,6 +19,7 @@ package admin
 
 import (
 	"context"
+	"errors"
 	"sync"
 	"time"
 
@@ -26,6 +27,10 @@ import (
 	"github.com/freeliver/rocketmq-client-go/v2/internal/remote"
 	"github.com/freeliver/rocketmq-client-go/v2/primitive"
 	"github.com/freeliver/rocketmq-client-go/v2/rlog"
+)
+
+var (
+	ErrBrokerNotFound = errors.New("broker not exists")
 )
 
 type Admin interface {
@@ -106,6 +111,16 @@ func (a *admin) CreateTopic(ctx context.Context, opts ...OptionCreate) error {
 		TopicFilterType: cfg.TopicFilterType,
 		TopicSysFlag:    cfg.TopicSysFlag,
 		Order:           cfg.Order,
+	}
+
+	//create topic in broker
+	if cfg.BrokerAddr == "" {
+		addrs := a.namesrv.AddrList()
+		if len(addrs) <= 0 {
+			return ErrBrokerNotFound
+		}
+
+		cfg.BrokerAddr = addrs[0]
 	}
 
 	cmd := remote.NewRemotingCommand(internal.ReqCreateTopic, request, nil)
