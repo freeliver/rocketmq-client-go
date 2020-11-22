@@ -145,6 +145,7 @@ func (s *namesrvs) SetCredentials(credentials primitive.Credentials) {
 }
 
 func (s *namesrvs) AddrList() []string {
+	fmt.Println(s.brokerAddressesMap)
 	return s.srvs
 }
 
