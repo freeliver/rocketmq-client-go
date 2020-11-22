@@ -20,7 +20,7 @@ package utils
 import (
 	"errors"
 
-	"github.com/apache/rocketmq-client-go/v2/rlog"
+	"github.com/freeliver/rocketmq-client-go/v2/rlog"
 )
 
 var (

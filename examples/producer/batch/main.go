@@ -23,9 +23,9 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/apache/rocketmq-client-go/v2"
-	"github.com/apache/rocketmq-client-go/v2/primitive"
-	"github.com/apache/rocketmq-client-go/v2/producer"
+	"github.com/freeliver/rocketmq-client-go/v2"
+	"github.com/freeliver/rocketmq-client-go/v2/primitive"
+	"github.com/freeliver/rocketmq-client-go/v2/producer"
 )
 
 func main() {
